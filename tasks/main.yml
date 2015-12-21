@@ -1,0 +1,59 @@
+---
+
+- name: Enable drupal core dependency
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+    drush en {{ item }} -y
+    chdir={{ drupal_path }}
+  with_items: "{{ drupal_code_modules }}"
+  register: core_modules_enabled
+  changed_when: "'is already enabled' not in core_modules_enabled.stderr"
+
+- name: Check default drupal theme
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+    drush vget theme_default
+    chdir={{ drupal_path }}
+  register: default_theme
+  changed_when: false
+
+- name: Install drupal theme dependencies
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+  command: |
+    drush en {{ item }} -y
+    chdir={{ drupal_path }}
+    creates={{ drupal_path }}/sites/all/themes/{{ item }}
+  with_items: "{{ drupal_themes }}"
+
+- name: Install drupal module dependencies
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+  command: |
+    drush en {{ item }} -y
+    chdir={{ drupal_path }}
+    creates={{ drupal_path }}/sites/all/modules/{{ item }}
+  with_items: "{{ drupal_modules }}"
+
+- name: Install other module dependencies
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+  command: |
+    drush en {{ item }} -y
+    chdir={{ drupal_path }}
+    creates={{ drupal_path }}/modules/{{ item }}
+  with_items: "{{ drupal_other_modules }}"
+
+- name: Set default theme
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+  command: |
+    drush vset theme_default tdr
+    chdir={{ drupal_path }}
+  when: default_theme.stdout.split(':')[1] != " '{{ drupal_default_theme }}'"

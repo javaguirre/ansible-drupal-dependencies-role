@@ -1,0 +1,9 @@
+---
+
+drupal_path: "/var/www/drupal"
+drupal_user: apache
+drupal_core_modules: []
+drupal_themes: []
+drupal_modules: []
+drupal_other_modules: []
+drupal_default_theme: bartik

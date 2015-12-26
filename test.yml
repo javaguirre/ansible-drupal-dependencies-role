@@ -4,8 +4,6 @@
     - defaults/main.yml
 
   vars:
-    # TODO Try to test with a different user on Travis-CI
-    drupal_user: root
     drush_version: 7.x
 
   roles:

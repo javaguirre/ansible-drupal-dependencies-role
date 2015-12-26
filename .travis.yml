@@ -20,11 +20,11 @@ script:
   - ansible-playbook --syntax-check -i inventory test.yml
 
   # First run
-  - ansible-playbook -i inventory test.yml --connection=local --sudo
+  - ansible-playbook -e "drupal_user=root" -i inventory test.yml --connection=local --sudo
 
   # Idempotence
   - >
-    ansible-playbook -i inventory test.yml --connection=local --sudo
+    ansible-playbook -e "drupal_user=root" -i inventory test.yml --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)

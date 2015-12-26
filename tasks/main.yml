@@ -6,7 +6,7 @@
   command: |
     {{ drush_bin_path }} en {{ item }} -y
     chdir={{ drupal_path }}
-  with_items: "{{ drupal_code_modules }}"
+  with_items: "{{ drupal_core_modules }}"
   register: core_modules_enabled
   changed_when: "'is already enabled' not in core_modules_enabled.stderr"
 

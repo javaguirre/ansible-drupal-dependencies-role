@@ -1,6 +1,6 @@
 ---
 
-drush_bin_path: "/usr/bind/drush"
+drush_bin_path: "/usr/local/bin/drush"
 drupal_path: "/var/www/drupal"
 drupal_user: apache
 drupal_core_modules: []

@@ -1,7 +1,13 @@
 - hosts: all
 
-  tasks:
-    - include: tasks/main.yml
-
   vars_files:
     - defaults/main.yml
+
+  vars:
+    drush_version: 7.x
+
+  roles:
+    - { role: geerlingguy.drush, sudo: yes }
+
+  tasks:
+    - include: tasks/main.yml

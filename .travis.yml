@@ -10,6 +10,8 @@ install:
 
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
+  - ansible-galaxy install geerlingguy.drush
+
 script:
   # Prepare tests
   - echo localhost > inventory

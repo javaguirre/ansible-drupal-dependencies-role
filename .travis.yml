@@ -1,16 +1,46 @@
 ---
 language: python
-python: "2.7"
+
+# Python instead of php?
+# We need a way of having both php and python
+php:
+  - 5.6
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
 before_install:
  - sudo apt-get update -qq
+
+  # Install Ansible dependencies
  - sudo apt-get install -qq python-apt python-pycurl
 
 install:
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+  # Install Drush
+  - composer global require drush/drush:dev-master
+  - phpenv rehash
+
+  # Create MySQL Database
+  - mysql -e 'create database drupal;'
+
+  # Download Drupal
+  - cd ..
+  - drush dl drupal-7 --drupal-project-rename=drupal
+  - mv decoupled_auth drupal/modules
+  - cd drupal
+
+  # Install drupal default profile
+  - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
+  - drush en -y decoupled_auth
+
+  # Ansible
   - pip install ansible>=1.6.0
 
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-
-  - ansible-galaxy install geerlingguy.drush
 
 script:
   # Prepare tests

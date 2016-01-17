@@ -30,12 +30,10 @@ install:
   # Download Drupal
   - cd ..
   - drush dl drupal-7 --drupal-project-rename=drupal
-  - mv decoupled_auth drupal/modules
   - cd drupal
 
   # Install drupal default profile
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
-  - drush en -y decoupled_auth
 
   # Ansible
   - pip install ansible>=1.6.0

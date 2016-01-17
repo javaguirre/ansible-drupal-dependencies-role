@@ -1,5 +1,5 @@
 ---
-language: python
+language: php
 
 # Python instead of php?
 # We need a way of having both php and python

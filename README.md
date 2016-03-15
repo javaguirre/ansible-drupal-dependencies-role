@@ -21,6 +21,8 @@ drupal_themes: []
 drupal_modules: []
 drupal_other_modules: []
 drupal_default_theme: bartik
+drupal_clear_cache: no
+drupal_cache_option: all
 ```
 
 ## Usage
@@ -51,6 +53,8 @@ An example usage could be like:
 
     drupal_default_theme: bootstrap
 
+    drupal_clear_cache: yes
+    drupal_cache_option: theme
 ```
 
 ## Feedback

@@ -53,3 +53,11 @@
     {{ drush_bin_path }} vset theme_default tdr
     chdir={{ drupal_path }}
   when: default_theme.stdout.split(':')[1] != " '{{ drupal_default_theme }}'"
+
+- name: Clear the Cache
+  become: yes
+  become_user: "{{ drupal_user }}"
+  command: |
+    {{ drush_bin_path }} cache-clear {{ drupal_cache_option }}
+    chdir={{ drupal_path }}
+  when: drupal_clear_cache

@@ -8,3 +8,5 @@ drupal_themes: []
 drupal_modules: []
 drupal_other_modules: []
 drupal_default_theme: bartik
+drupal_clear_cache: no
+drupal_cache_option: all

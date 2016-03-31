@@ -59,6 +59,9 @@ An example usage could be like:
 
     drupal_clear_cache: yes
     drupal_cache_option: theme
+
+  roles:
+    - javaguirre.drupal_deps
 ```
 
 ## Feedback

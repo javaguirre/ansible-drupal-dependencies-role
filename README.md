@@ -6,7 +6,11 @@ Ansible role using [Drush](https://github.com/drush-ops/drush) to manage theme a
 
 ## Dependencies
 
-This role doesn't install Drupal nor Drush, there are other roles already doing that, you could use this role with those.
+This role doesn't install Drupal nor Drush, there are other roles already doing that, for example you could use geerlingguy's
+Ansible modules for that purpose:
+
+- [Drupal][drupal]
+- [Drush][drush]
 
 ## Variables
 
@@ -60,3 +64,6 @@ An example usage could be like:
 ## Feedback
 
 [Please send me your requests/questions!](https://github.com/javaguirre/ansible-drupal-dependencies-role/issues)
+
+[drupal]: https://github.com/geerlingguy/ansible-role-drupal
+[drush]: https://github.com/geerlingguy/ansible-role-drush

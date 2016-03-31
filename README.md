@@ -36,7 +36,7 @@ An example usage could be like:
 ```yaml
 - hosts: all
   remote_user: myuser
-  sudo: no
+  become: no
 
   vars:
     drush_bin_path: "/usr/bin/drush"
@@ -69,7 +69,7 @@ An example usage could be like:
 ```yaml
 - hosts: all
   remote_user: myuser
-  sudo: no
+  become: no
 
   vars:
     # geerlingguy.drupal
